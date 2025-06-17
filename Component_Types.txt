@@ -1,0 +1,105 @@
+NestJS Component Types (Detailed):
+
+1. Controllers
+    - In few words: Controllers handle incoming HTTP requests and return responses.
+    - Purpose: Handle incoming HTTP requests, map routes to methods, and return responses to the client.
+    - Decorators: @Controller(), @Get(), @Post(), @Put(), @Delete(), etc.
+    - Example:
+        @Controller('users')
+        export class UsersController {
+            @Get()
+            findAll() { /* ... */ }
+        }
+
+2. Providers
+    - In few words: Providers are the ones that create the classes that are injected into controllers.
+    - Purpose: Encapsulate business logic, data access, and utility functions. Includes services, repositories, and helpers.
+    - Decorators: @Injectable()
+    - Example:
+        @Injectable()
+        export class UsersService {
+            findAll() { /* ... */ }
+        }
+
+3. Modules
+    - In few words: Modules group related controllers and providers for modular architecture.
+    - Purpose: Group related controllers, providers, and other modules. Enable modular architecture.
+    - Decorators: @Module()
+    - Example:
+        @Module({
+            controllers: [UsersController],
+            providers: [UsersService],
+        })
+        export class UsersModule {}
+
+4. DTOs (Data Transfer Objects)
+    - In few words: DTOs define the shape and validation of data sent in requests and responses.
+    - Purpose: Define the structure and validation rules for data sent in requests and responses.
+    - Usage: Used with validation pipes for input validation.
+    - Example:
+        export class CreateUserDto {
+            name: string;
+            email: string;
+        }
+
+5. Guards
+    - In few words: Guards control access to routes based on authorization logic.
+    - Purpose: Control access to routes based on authorization logic (e.g., roles, permissions, authentication).
+    - Decorators: @UseGuards()
+    - Example:
+        @UseGuards(AuthGuard)
+        @Get('profile')
+        getProfile() { /* ... */ }
+
+6. Interceptors
+    - In few words: Interceptors add logic before/after method execution (e.g., logging, transforming responses).
+    - Purpose: Add logic before/after method execution (e.g., logging, transforming responses, caching).
+    - Decorators: @UseInterceptors()
+    - Example:
+        @UseInterceptors(LoggingInterceptor)
+        @Get()
+        findAll() { /* ... */ }
+
+7. Pipes
+    - In few words: Pipes transform and validate incoming request data.
+    - Purpose: Transform and validate incoming request data before it reaches the route handler.
+    - Decorators: @UsePipes()
+    - Example:
+        @UsePipes(ValidationPipe)
+        @Post()
+        create(@Body() createUserDto: CreateUserDto) { /* ... */ }
+
+8. Filters (Exception Filters)
+    - In few words: Filters handle and customize error responses.
+    - Purpose: Handle and customize error responses. Catch exceptions thrown by controllers or services.
+    - Decorators: @UseFilters()
+    - Example:
+        @UseFilters(HttpExceptionFilter)
+        @Get()
+        findAll() { /* ... */ }
+
+9. Middleware
+    - In few words: Middleware executes code before the request reaches controllers.
+    - Purpose: Execute code before the request reaches controllers (e.g., logging, authentication, request modification).
+    - Usage: Applied at the application or route level.
+    - Example:
+        app.use(loggerMiddleware);
+
+10. Loggers
+     - In few words: Loggers provide logging for debugging and monitoring.
+     - Purpose: Provide logging for debugging, monitoring, and auditing application behavior.
+     - Usage: Use built-in Logger or custom loggers.
+     - Example:
+         Logger.log('User created');
+
+11. Auth (Authentication Strategies)
+     - In few words: Auth implements authentication mechanisms (e.g., JWT, OAuth).
+     - Purpose: Implement authentication mechanisms (e.g., JWT, OAuth, local). Often use Passport strategies.
+     - Decorators: @UseGuards()
+     - Example:
+         @UseGuards(AuthGuard('jwt'))
+         @Get('profile')
+         getProfile() { /* ... */ }
+
+Summary:
+Each NestJS component type serves a specific role in structuring, securing, validating, and handling application logic, making applications modular, maintainable, and scalable.

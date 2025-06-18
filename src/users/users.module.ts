@@ -1,4 +1,4 @@
-import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/common';
 import { UsersController } from './users.controller';
 import { UsersService } from './users.service';
 import { LoggerMiddleware } from './logger/logger.middleware';
@@ -17,6 +17,12 @@ export class UsersModule implements NestModule{
 
       After logging, it calls next() to let the request continue to the controller.
     */
-    consumer.apply(LoggerMiddleware).forRoutes('users');
+    // If you want to use it for all the HTTP methods(GET, POST, PUT, etc...)
+    // consumer.apply(LoggerMiddleware).forRoutes('users');
+
+    // If you want to use it for a specific HTTP method (In this case "GET")
+    consumer
+    .apply(LoggerMiddleware)
+    .forRoutes({path: '/users', method: RequestMethod.GET});
   }
 }

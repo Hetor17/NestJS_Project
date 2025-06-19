@@ -13,12 +13,13 @@ const projects_module_1 = require("./projects/projects.module");
 const auth_module_1 = require("./auth/auth.module");
 const users_module_1 = require("./users/users.module");
 const hello_controller_1 = require("./hello/hello.controller");
+const payments_module_1 = require("./payments/payments.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [tasks_module_1.TasksModule, projects_module_1.ProjectsModule, auth_module_1.AuthModule, users_module_1.UsersModule],
+        imports: [tasks_module_1.TasksModule, projects_module_1.ProjectsModule, auth_module_1.AuthModule, users_module_1.UsersModule, payments_module_1.PaymentsModule],
         controllers: [hello_controller_1.HelloController],
     })
 ], AppModule);

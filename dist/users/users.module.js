@@ -12,6 +12,7 @@ const users_controller_1 = require("./users.controller");
 const users_service_1 = require("./users.service");
 const logger_middleware_1 = require("./logger/logger.middleware");
 const auth_middleware_1 = require("./auth/auth.middleware");
+const prisma_service_1 = require("../prisma.service");
 let UsersModule = class UsersModule {
     configure(consumer) {
         consumer
@@ -28,7 +29,7 @@ exports.UsersModule = UsersModule;
 exports.UsersModule = UsersModule = __decorate([
     (0, common_1.Module)({
         controllers: [users_controller_1.UsersController],
-        providers: [users_service_1.UsersService],
+        providers: [users_service_1.UsersService, prisma_service_1.PrismaService],
     })
 ], UsersModule);
 //# sourceMappingURL=users.module.js.map

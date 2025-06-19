@@ -3,10 +3,11 @@ import { UsersController } from './users.controller';
 import { UsersService } from './users.service';
 import { LoggerMiddleware } from './logger/logger.middleware';
 import { AuthMiddleware } from './auth/auth.middleware';
+import { PrismaService } from '../prisma.service'; // Fixed import path
 
 @Module({
   controllers: [UsersController],
-  providers: [UsersService],
+  providers: [UsersService, PrismaService], // Added PrismaService here
 })
 // This makes the module able to configure middleware.
 export class UsersModule implements NestModule{

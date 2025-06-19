@@ -101,5 +101,11 @@ NestJS Component Types (Detailed):
          @Get('profile')
          getProfile() { /* ... */ }
 
+12. Resources
+     - In few words: Resources are a combination of controller, service, and related files for a specific domain.
+     - Purpose: Scaffold a set of files (controller, service, module, DTOs, etc.) for a domain entity using the Nest CLI.            - Usage: Generated using the CLI command `nest g resource <name>`.
+     - Example:
+         nest g resource payments
+     - Result: Creates `payments.controller.ts`, `payments.service.ts`, `payments.module.ts`, DTOs, and test files for the "payments" domain.
 Summary:
 Each NestJS component type serves a specific role in structuring, securing, validating, and handling application logic, making applications modular, maintainable, and scalable.

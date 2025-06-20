@@ -22,12 +22,13 @@ export class UsersService {
   constructor(private prisma: PrismaService) {}
 
   // Returns all users from the database
-  
+  // This works by calling the Prisma client to find many user records
   getUsers() {
     return this.prisma.user.findMany();
   }
 
   // Creates a new user in the database using the provided DTO
+  // This method takes a CreateUserDto object and uses the prisma client 
   createUser(user: CreateUserDto){
     return this.prisma.user.create({data:user})
   }

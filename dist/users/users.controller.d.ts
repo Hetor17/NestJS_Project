@@ -6,16 +6,16 @@ export declare class UsersController {
     getUsers(): import(".prisma/client").Prisma.PrismaPromise<{
         id: string;
         email: string;
-        password: string;
         name: string | null;
+        password: string;
         createdAt: Date;
         updatedAt: Date;
     }[]>;
     createUser(user: CreateUserDto): import(".prisma/client").Prisma.Prisma__UserClient<{
         id: string;
         email: string;
-        password: string;
         name: string | null;
+        password: string;
         createdAt: Date;
         updatedAt: Date;
     }, never, import("@prisma/client/runtime/library").DefaultArgs, import(".prisma/client").Prisma.PrismaClientOptions>;

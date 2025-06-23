@@ -17,9 +17,9 @@ export class CreateUserDto {
     @IsNotEmpty()
     name: string;
 
-    // Verifies that the phone number is a number
-    @IsNumber()
-    // Verifies that the maximum number is 100
-    @Max(100)
-    age: number;
+    // // Verifies that the phone number is a number
+    // @IsNumber()
+    // // Verifies that the maximum number is 100
+    // @Max(100)
+    // age: number;
 }

@@ -24,16 +24,17 @@ export class UsersModule implements NestModule{
     // consumer.apply(LoggerMiddleware).forRoutes('users');
 
     // If you want to use it for a specific HTTP method (In this case "GET")
-    consumer
-    .apply(LoggerMiddleware)
-    .forRoutes(
-      {path: '/users', method: RequestMethod.GET},
-      {
-        path:'/users',
-        method: RequestMethod.POST,
-      },
-    )
-    .apply(AuthMiddleware)
-    .forRoutes('users');
+    
+    // consumer
+    // .apply(LoggerMiddleware)
+    // .forRoutes(
+    //   {path: '/users', method: RequestMethod.GET},
+    //   {
+    //     path:'/users',
+    //     method: RequestMethod.POST,
+    //   },
+    // )
+    // .apply(AuthMiddleware)
+    // .forRoutes('users');
   }
 }

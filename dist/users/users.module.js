@@ -10,19 +10,9 @@ exports.UsersModule = void 0;
 const common_1 = require("@nestjs/common");
 const users_controller_1 = require("./users.controller");
 const users_service_1 = require("./users.service");
-const logger_middleware_1 = require("./logger/logger.middleware");
-const auth_middleware_1 = require("./auth/auth.middleware");
 const prisma_service_1 = require("../prisma.service");
 let UsersModule = class UsersModule {
     configure(consumer) {
-        consumer
-            .apply(logger_middleware_1.LoggerMiddleware)
-            .forRoutes({ path: '/users', method: common_1.RequestMethod.GET }, {
-            path: '/users',
-            method: common_1.RequestMethod.POST,
-        })
-            .apply(auth_middleware_1.AuthMiddleware)
-            .forRoutes('users');
     }
 };
 exports.UsersModule = UsersModule;

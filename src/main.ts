@@ -26,6 +26,7 @@ async function bootstrap() {
     origin: 'https://example.com' // This should be replaced with your actual frontend URL in production
   })
 
+  // The application listens on the port specified in the environment variable PORT or defaults to 3000.
   await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();

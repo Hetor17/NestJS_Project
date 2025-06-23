@@ -37,12 +37,43 @@ lerna-debug.log*
 
 # dotenv environment variable files
 .env
-.env.development.local
-.env.test.local
-.env.production.local
-.env.local
+.env.*
 
-# temp directory
+# Database
+*.sqlite
+*.db
+*.db-journal
+prisma/dev.db
+prisma/test.db
+
+# Prisma generated files
+/generated/
+/prisma/migrations/
+
+# Sensitive system files
+*.pem
+*.key
+*.crt
+*.pfx
+*.env.local
+*.env.development.local
+*.env.test.local
+*.env.production.local
+
+# OS and IDE files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+
+# Logs and temp
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
 .temp
 .tmp
 
@@ -52,7 +83,7 @@ pids
 *.seed
 *.pid.lock
 
-# Diagnostic reports (https://nodejs.org/api/report.html)
+# Diagnostic reports
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
 /generated/prisma

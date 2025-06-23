@@ -13,6 +13,7 @@ import {
 import { TasksService } from './tasks.service';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
+import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 
 @Controller('/tasks')
 export class TasksController {
@@ -37,6 +38,8 @@ export class TasksController {
   // Get is used to receive the data of an object
   @Get()
   // Query reads the query parameters from the URL (e.g., /tasks?limit=10)
+  @ApiOperation({summary: 'Get all Tasks'})
+  @ApiResponse({ status: 200, description: 'Return all Tasks'})
   getAllTasks(@Query() query: any) {
     console.log({ ...query });
     // eslint-disable-next-line @typescript-eslint/no-unsafe-return
@@ -53,6 +56,9 @@ export class TasksController {
 
   // Post is used to create a new object
   @Post()
+  @ApiOperation({ summary: 'Create a new Task' })
+  @ApiResponse({ status: 201, description: 'Create a new Task' })
+  @ApiResponse({ status: 403, description: 'Forbidden' })
   createTask(@Body() task: CreateTaskDto) {
     return this.tasksService.createTask(task);
   }

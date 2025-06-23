@@ -19,7 +19,13 @@ async function bootstrap() {
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, documentFactory);
-  
+
+  // I enabled CORS to allow requests from any origin.
+  // This is useful for development, but in production, you should restrict it to specific origins to enhance security.
+  app.enableCors({
+    origin: 'https://example.com' // This should be replaced with your actual frontend URL in production
+  })
+
   await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();

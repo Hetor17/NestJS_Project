@@ -48,7 +48,6 @@ prisma/test.db
 
 # Prisma generated files
 /generated/
-/prisma/migrations/
 
 # Sensitive system files
 *.pem
